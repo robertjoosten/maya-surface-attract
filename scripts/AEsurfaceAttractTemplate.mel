@@ -1,0 +1,34 @@
+global proc AEsurfaceAttractTemplate( string $nodeName )
+{
+    editorTemplate -beginScrollLayout;
+        editorTemplate -beginLayout "Surface Attract Attributes" -collapse 0;
+            editorTemplate -callCustom ("AEinputNew \"Input Surface\"")
+                                           ("AEinputReplace \"Input Surface\"")
+                                           "inputSurface";
+            editorTemplate -beginLayout "Attract" -collapse 0;
+                editorTemplate -beginNoOptimize;
+                editorTemplate -addControl "attractDistance";
+                AEaddRampControl( $nodeName + ".attractRamp" );
+                AEaddRampControl( $nodeName + ".attractRampU" );
+                AEaddRampControl( $nodeName + ".attractRampV" );
+                editorTemplate -endNoOptimize;
+                editorTemplate -endLayout;
+            editorTemplate -beginLayout "Bulge" -collapse 0;
+                editorTemplate -beginNoOptimize;
+                editorTemplate -addControl "bulgeDistance";
+                editorTemplate -addControl "bulgeStrength";
+                AEaddRampControl( $nodeName + ".bulgeRamp" );
+                editorTemplate -endNoOptimize;
+                editorTemplate -endLayout;
+            editorTemplate -beginLayout "Smoothing" -collapse 0;
+                editorTemplate -beginNoOptimize;
+                editorTemplate -addControl "smoothingStep";
+                editorTemplate -addControl "smoothingIterations";
+                editorTemplate -endNoOptimize;
+                editorTemplate -endLayout;
+        AEweightGeometryFilterTemplate $nodeName;
+        editorTemplate -endLayout;
+        editorTemplate -addExtraControls;
+
+    editorTemplate -endScrollLayout;
+}
