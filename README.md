@@ -26,19 +26,19 @@ Once the plug-in is build and loaded a new `surfaceAttract` node can be
 created by selecting the meshes and running the 
 `cmds.deformer(type="surfaceAttract")` command. 
 
-<p align="center"><img src="icons/curve-attract-network-example.png?raw=true"></p>
+<p align="center"><img src="icons/surface-attract-network-example.png?raw=true"></p>
 
 After this the surface needs to be manually connected into the `inputSurface` 
 attribute on the node.
 
-<p align="center"><img src="icons/curve-attract-scene-example.png?raw=true"></p>
+<p align="center"><img src="icons/surface-attract-scene-example.png?raw=true"></p>
 
 The `parameter` ramp is used to generate multiplier values for the parameter
 of the closest point on the surface. This can come in handy to generate a zipper
 effect. The `falloff` ramp is used to generate multiplier values for the 
 falloff allowing for a smoother transition.
 
-<p align="center"><img src="icons/curve-attract-attribute-example.png?raw=true"></p>
+<p align="center"><img src="icons/surface-attract-attribute-example.png?raw=true"></p>
 
 Smoothing operations are in place to smooth vertices along the distance. For 
 this the `smoothingStep` and `smoothingIterations` attributes can be used.
