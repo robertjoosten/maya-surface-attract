@@ -274,7 +274,14 @@ MStatus SurfaceAttractNode::deform(MDataBlock& block, MItGeometry& iter, const M
     // will work hardest on vertices that have a 90 degree angle between
     // normal and closest point.
     for (auto const& index: indices) {
-        MPoint point = points[index.second] * matrix;
+        MPoint point = points[index.second];
+        vertexWeight = weightValue(block, multiIndex, index.first);
+        if (weight * vertexWeight < 0.00001f) {
+            points.set(point, index.second);
+            continue;
+        }
+
+        point *= matrix;
 
         status = itGeom.setIndex(index.first, prevIndex);
         CHECK_MSTATUS_AND_RETURN_IT(status);
@@ -303,8 +310,6 @@ MStatus SurfaceAttractNode::deform(MDataBlock& block, MItGeometry& iter, const M
 
         fnBulgeRamp.getValueAtPosition(bulgeNormal, bulgeWeight, &status);
         CHECK_MSTATUS_AND_RETURN_IT(status);
-
-        vertexWeight = weightValue(block, multiIndex, index.first);
 
         attractMultiplier = weight * attractWeight * vertexWeight;
         bulgeMultiplier = weight * bulgeWeight * vertexWeight;
