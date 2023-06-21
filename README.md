@@ -33,10 +33,13 @@ attribute on the node.
 
 <p align="center"><img src="icons/surface-attract-scene-example.png?raw=true"></p>
 
-The `parameter` ramp is used to generate multiplier values for the parameter
-of the closest point on the surface. This can come in handy to generate a zipper
-effect. The `falloff` ramp is used to generate multiplier values for the 
-falloff allowing for a smoother transition.
+The `attractRampU` and `attractRampV` ramp is used to generate multiplier 
+values for the parameter of the closest point on the surface. This can 
+come in handy to generate a zipper effect. The `attractRamp` ramp is used 
+to generate multiplier values for the falloff allowing for a smoother transition.
+
+The `bulgeDistance` and `bulgeStrength` values are used to control the overall 
+bulge effect with `bulgeRamp` being used to control the falloff.
 
 <p align="center"><img src="icons/surface-attract-attribute-example.png?raw=true"></p>
 
